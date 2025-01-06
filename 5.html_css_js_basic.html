@@ -28,9 +28,17 @@
             color: yellow;
         }
     </style>
+    <script>
+        function updateDemo1(){
+            document.getElementById("demo1").innerHTML="hello world1";
+        }
+        document.getElementById("load1").innerHTML="hello world load1";
+    </script>
+    <!-- 외부 js import시에 아래와 같이선언 -->
+    <script src="js/myjs.js"></script>
 </head>
 <body>
-    <!-- css적용방법 3가지 : 인라인, 내부스탈일, 외부스타일 -->
+    <!-- css적용방법 3가지 : 인라인, 내부스타일, 외부스타일 -->
     <p style="color: green; text-align: center; text-decoration: underline;">인라인스타일 적용</p>
     <!-- 내부스타일 적용 : 문서전체에 대한 디자인을 head에 style태그 내에서 한꺼번에 지정 -->
     <!-- 이때에 요소를 선택해야하는데, 요소 선택의 방법으로는 태그선택자, 클래스선택자, id선택자 3가지 방법 -->
@@ -56,5 +64,24 @@
         <p>첫번째 단락</p>
         <section><p>두번째 단락</p></section>
      </div>
+
+     <h2>javascript 예시</h2>
+     <p id="demo1">변경될 내용 1</p>
+     <button onclick="updateDemo1()">변경버튼 1</button>
+     <p id="demo2">변경될 내용 2</p>
+     <button onclick="updateDemo2()">변경버튼 2</button>
+     <p id="demo3">변경될 내용 3</p>
+     <button onclick="updateDemo3()">변경버튼 3</button>
+
+    <h2>js 로드 순서</h2>
+    <p id="load1">js 로드1</p>
+    <p id="load2">js 로드2</p>
+
+     <script>
+        document.getElementById("load2").innerHTML="hello world load2";
+        function updateDemo2(){
+            document.getElementById("demo2").innerHTML="hello world2";
+        }
+     </script>
 </body>
 </html>
