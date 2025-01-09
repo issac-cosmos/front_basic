@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판서비스</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* 가로 스크롤 제거 */
+        }
+    
+        object {
+            display: block; /* 객체를 블록 요소로 설정 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤드 -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <a href="../post/post_list.html" class="navbar-brand mx-auto">게시판서비스</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="../author/author_list.html" class="nav-link">회원목록</a>
+            </li>
+            <li class="nav-item">
+                <a href="../author/author_detail.html" class="nav-link">회원상세조회</a>
+            </li>
+            <li class="nav-item">
+                <a href="../post/post_list.html" class="nav-link">게시글목록</a>
+            </li>
+            <li class="nav-item">
+                <a href="../post/post_detail.html" class="nav-link">게시글상세조회</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- 바디 -->
+     <div class="container">
+        <div class="page-header"><h3>회원가입</h3></div>
+        <form>
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>
+            <div class="form-group">
+                <label for="email">이메일</label>
+                <input type="text" class="form-control" name="email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="password">비밀번호</label>
+                <input type="password" class="form-control" name="password" id="password">
+            </div>
+            
+            <button class="btn btn-secondary" type="button" onclick="authorData()">제출</button>
+        </form>
+        
+    </div>
+    <script>
+        async function authorData(){
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const data = {name,email,password};
+            const result = await axios.post("http://localhost:8081/author/register1",data);
+            window.location.href ="author_list.html";
+        }
+    </script>
+    
+</body>
+</html>
